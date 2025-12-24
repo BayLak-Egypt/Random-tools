@@ -1,5 +1,5 @@
 # Color Dropper - v1.0
-
+![Screenshot](https://github.com/BayLak-ONE/Random-tools/blob/main/color-dropper/Screenshot%20from%202025-12-21%2022-33-23.png)
 A professional, high-precision color extraction tool designed for designers and developers. Extract HEX and RGB codes from any image or GIF with ease.
 
 ## 🚀 Features
