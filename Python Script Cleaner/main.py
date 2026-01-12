@@ -1,36 +1,54 @@
+
 import tkinter as tk
 from tkinter import ttk, filedialog, messagebox
 import os
 import re
 import threading
 
+try:
+    from tkinterdnd2 import DND_FILES, TkinterDnD
+    HAS_DND = True
+except ImportError:
+    HAS_DND = False
+
 def clean_python_code(code: str) -> str:
     cleaned_lines = []
+    comment_re = re.compile(r'((?:(?:"(?:\\.|[^"])*")|(?:\'(?:\\.|[^\'])*\')|[^#])*)(#.*)?')
     for line in code.splitlines():
-        stripped = line.strip()
-        if not stripped or stripped.startswith("#"):
+        if not line.strip() or line.strip().startswith("#"):
             continue
-        if "#" in line:
-            parts = re.split(r'(?:"[^"]*"|\'[^\']*\')', line)
-            if "#" in parts[-1] or "#" in line:
-                 line = line.split("#", 1)[0].rstrip()
-        if line.strip():
-            cleaned_lines.append(line)
+        match = comment_re.match(line)
+        if match:
+            clean_line = match.group(1).rstrip()
+            if clean_line:
+                cleaned_lines.append(clean_line)
     return "\n".join(cleaned_lines)
+
+def add_path_to_list(path):
+    path = path.strip('{}').strip('"').strip("'")
+    abs_path = os.path.abspath(path)
+    if os.path.isfile(abs_path) and abs_path.endswith(".py"):
+        if abs_path not in listbox_files.get(0, tk.END):
+            listbox_files.insert(tk.END, abs_path)
+    elif os.path.isdir(abs_path):
+        threading.Thread(target=scan_folder_task, args=(abs_path,), daemon=True).start()
+
+def handle_drop(event):
+    data = event.data
+    paths = re.findall(r'\{(.*?)\}|(\S+)', data)
+    for p in paths:
+        path = p[0] if p[0] else p[1]
+        add_path_to_list(path)
 
 def select_files():
     files = filedialog.askopenfilenames(filetypes=[("Python Files", "*.py")])
-    current_list = listbox_files.get(0, tk.END)
     for f in files:
-        abs_path = os.path.abspath(f)
-        if abs_path not in current_list:
-            listbox_files.insert(tk.END, abs_path)
+        add_path_to_list(f)
 
 def select_folder():
     folder = filedialog.askdirectory(mustexist=True)
     if folder:
-        folder = os.path.abspath(folder)
-        threading.Thread(target=scan_folder_task, args=(folder,), daemon=True).start()
+        add_path_to_list(folder)
 
 def scan_folder_task(folder):
     current_list = listbox_files.get(0, tk.END)
@@ -65,7 +83,8 @@ def process_files_task(files):
         except Exception:
             pass
         root.after(0, lambda v=idx: progress_bar.configure(value=v))
-    root.after(0, lambda: messagebox.showinfo("Success", "Files updated successfully!"))
+    
+    root.after(0, lambda: messagebox.showinfo("Success", "Process Completed!"))
     root.after(0, lambda: listbox_files.delete(0, tk.END))
     root.after(0, lambda: progress_bar.configure(value=0))
 
@@ -77,9 +96,9 @@ def start_cleaning():
     if messagebox.askyesno("Confirm", "Overwrite original files?"):
         threading.Thread(target=process_files_task, args=(files,), daemon=True).start()
 
-root = tk.Tk()
+root = TkinterDnD.Tk() if HAS_DND else tk.Tk()
 root.title("Python Script Cleaner")
-root.geometry("700x550")
+root.geometry("700x600")
 root.configure(bg="#f0f2f5")
 
 context_menu = tk.Menu(root, tearoff=0)
@@ -88,7 +107,9 @@ context_menu.add_command(label="Add Folder", command=select_folder)
 context_menu.add_separator()
 context_menu.add_command(label="Remove Selected", command=delete_selected, foreground="red")
 
-tk.Label(root, text="Files to Process:", bg="#f0f2f5", font=("Arial", 10, "bold")).pack(pady=(15, 5), padx=25, anchor="w")
+status_text = "Drag & Drop enabled" if HAS_DND else "Drag & Drop disabled (Right-click to add)"
+tk.Label(root, text=status_text, bg="#f0f2f5", font=("Arial", 9, "bold"), fg="#555").pack(pady=(10, 0), padx=25, anchor="w")
+tk.Label(root, text="Files to Process:", bg="#f0f2f5", font=("Arial", 11, "bold")).pack(pady=(5, 5), padx=25, anchor="w")
 
 list_frame = tk.Frame(root, bg="#f0f2f5")
 list_frame.pack(fill="both", expand=True, padx=25)
@@ -101,6 +122,10 @@ listbox_files = tk.Listbox(
     xscrollcommand=scroll_x.set, yscrollcommand=scroll_y.set,
     borderwidth=1, relief="solid"
 )
+
+if HAS_DND:
+    listbox_files.drop_target_register(DND_FILES)
+    listbox_files.dnd_bind('<<Drop>>', handle_drop)
 
 scroll_y.config(command=listbox_files.yview)
 scroll_x.config(command=listbox_files.xview)
@@ -120,7 +145,6 @@ btn_run = tk.Button(
 )
 btn_run.pack(fill="x", padx=25, pady=(0, 10))
 
-footer_label = tk.Label(root, text="2026 made by baylak", bg="#f0f2f5", fg="#888", font=("Arial", 9, "italic"))
-footer_label.pack(pady=(0, 15))
+tk.Label(root, text="2026 made by baylak", bg="#f0f2f5", fg="#888", font=("Arial", 9, "italic")).pack(pady=(0, 15))
 
 root.mainloop()
