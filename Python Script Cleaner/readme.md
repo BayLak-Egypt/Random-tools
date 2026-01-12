@@ -1,4 +1,4 @@
-[ScreenShot](https://raw.githubusercontent.com/BayLak-ONE/Random-tools/refs/heads/main/Python%20Script%20Cleaner/Screenshot%20from%202026-01-12%2021-08-50.png?token=GHSAT0AAAAAADQIYFFD5IHKCOU4KQ6XF5TM2LFJDIQ)
+![ScreenShot](https://raw.githubusercontent.com/BayLak-ONE/Random-tools/refs/heads/main/Python%20Script%20Cleaner/Screenshot%20from%202026-01-12%2021-08-50.png?token=GHSAT0AAAAAADQIYFFD5IHKCOU4KQ6XF5TM2LFJDIQ)
 # Python Script Cleaner 
 
 A lightweight and efficient desktop application built with Python and Tkinter to clean your Python source code. It automatically removes comments and empty lines to make your scripts concise and production-ready.
