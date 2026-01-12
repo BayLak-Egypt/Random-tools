@@ -39,5 +39,4 @@ A lightweight and efficient desktop application built with Python and Tkinter to
 - **Context Menu**: Add or remove items easily with a right-click.
 - **Progress Tracking**: Visual feedback during the cleaning process.
 
----
-**2026 made by baylak**
+
