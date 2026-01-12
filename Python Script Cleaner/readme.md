@@ -1,43 +1,26 @@
 ![ScreenShot](https://raw.githubusercontent.com/BayLak-ONE/Random-tools/refs/heads/main/Python%20Script%20Cleaner/Screenshot%20from%202026-01-12%2021-08-50.png?token=GHSAT0AAAAAADQIYFFD5IHKCOU4KQ6XF5TM2LFJDIQ)
 # Python Script Cleaner 
 
-A lightweight and efficient desktop application built with Python and Tkinter to clean your Python source code. It automatically removes comments and empty lines to make your scripts concise and production-ready.
+A robust desktop utility built with Python to streamline your source code. This tool automatically removes comments and redundant blank lines while ensuring your functional code (like Hex color codes) remains intact.
 
-## ✨ Features
+## ✨ Key Features
 
-- **Batch Processing**: Clean multiple files or entire directories at once.
-- **In-place Updates**: Directly updates the original files (Overwrites) to save time.
-- **Intelligent Cleaning**: 
-    - Removes full-line comments (`#`).
-    - Removes trailing (side) comments.
-    - Preserves hashes `#` inside string literals (e.g., `print("Hello # world")`).
-    - Removes unnecessary blank lines.
-- **Async Processing**: Uses multi-threading to prevent the UI from freezing when scanning large folders.
-- **Modern UI**: 
-    - Clean and intuitive interface.
-    - Right-click context menu for easy file management.
-    - Real-time progress bar.
+- **Drag & Drop Support**: Simply drag files or folders directly into the app (powered by `tkinterdnd2`).
+- **Smart Cleaning**: 
+    - Removes full-line and trailing comments (`#`).
+    - **Safe-Hex Technology**: Intelligently ignores `#` inside strings and Hex color codes (e.g., `bg="#ffffff"` stays safe).
+- **In-place Updates**: Directly overwrites the original files to keep your workspace clean.
+- **Asynchronous Processing**: Multi-threaded scanning and cleaning to prevent UI freezing, even with thousands of files.
+- **Context Menu**: Right-click anywhere in the list to add files, add folders, or remove specific items.
+- **Progress Tracking**: Real-time progress bar for batch operations.
 
-## 🛠️ How to Use
+## 🛠️ Installation & Setup
 
-1. **Run the Script**: Execute the Python file.
-2. **Add Files/Folders**: 
-   - Right-click inside the list area.
-   - Choose **Add File(s)** to pick specific scripts.
-   - Choose **Add Folder** to scan a directory recursively for `.py` files.
-3. **Manage List**: If you added something by mistake, select it and right-click to **Remove Selected**.
-4. **Start Cleaning**: Click the **START CLEANING** button. 
-   - *Note: You will be asked for confirmation before overwriting.*
-
-## 📋 Requirements
-
+### Prerequisites
 - Python 3.x
-- Tkinter (usually comes pre-installed with Python)
+- Tkinter (standard with Python)
 
-## 📸 Preview
-
-- **File List**: Shows absolute paths for accuracy.
-- **Context Menu**: Add or remove items easily with a right-click.
-- **Progress Tracking**: Visual feedback during the cleaning process.
-
-
+### Optional (For Drag & Drop)
+To enable the Drag & Drop feature, install the following:
+```bash
+pip install tkinterdnd2
