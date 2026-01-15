@@ -22,7 +22,7 @@ This repository is a mix of everything useful. No specific niche—just scripts 
 Clone this repository and explore the tools:
 
 ```bash
-git clone [https://github.com/YOUR_USERNAME/Random-tools](https://github.com/YOUR_USERNAME/Random-tools)
+git clone [https://github.com/BayLak-ONE/Random-tools](https://github.com/BayLak-ONE/Random-tools)
 cd Random-tools
 chmod +x *
 
