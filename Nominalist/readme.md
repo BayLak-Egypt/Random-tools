@@ -1,6 +1,6 @@
 
 
-<img src="https://raw.githubusercontent.com/BayLak-Egypt/Random-tools/refs/heads/main/Nominalist/icon.png?token=GHSAT0AAAAAADQIYFFCO4P2DMJ6TPZBOX6A2MR6QRQ" width="300">
+<img src="https://raw.githubusercontent.com/BayLak-Egypt/Random-tools/refs/heads/main/Nominalist/icon.png?token=GHSAT0AAAAAADQIYFFCO4P2DMJ6TPZBOX6A2MR6QRQ" width="200">
 # 🛠️ Name Tools: Nominalist
 
 A collection of simple, fast, and professional Python tools for managing and auditing **Wordlists**. These tools give you full control over inspecting, searching, and cleaning your text files efficiently.
