@@ -1,4 +1,7 @@
-![ScreenShot](https://raw.githubusercontent.com/BayLak-Egypt/Random-tools/refs/heads/main/Python%20Script%20Cleaner/Screenshot%20from%202026-01-12%2021-08-50.png?token=GHSAT0AAAAAADQIYFFCGMI3BENN37ZSSQK62MGDOFQ)
+![ScreenShot](https://github.com/BayLak-Egypt/Random-tools/blob/main/Python%20Script%20Cleaner/Screenshot%20from%202026-01-12%2021-08-50.png))
+
+https://github.com/BayLak-Egypt/Random-tools/blob/main/Python%20Script%20Cleaner/Screenshot%20from%202026-01-12%2021-08-50.png
+
 # Python Script Cleaner 
 
 A robust desktop utility built with Python to streamline your source code. This tool automatically removes comments and redundant blank lines while ensuring your functional code (like Hex color codes) remains intact.
