@@ -1,6 +1,5 @@
 ![ScreenShot](Screenshot%20from%202026-01-12%2021-08-50.png))
 
-https://github.com/BayLak-Egypt/Random-tools/blob/main/Python%20Script%20Cleaner/Screenshot%20from%202026-01-12%2021-08-50.png
 
 # Python Script Cleaner 
 
