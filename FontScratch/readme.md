@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/823b2ecb-2310-4202-89da-29537ae02693" width="200" alt="Scratch Cat" style="background: transparent;">
+</p>
+
 # FontScratch
 
 ### Your Path Toward Building Systems
