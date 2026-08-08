@@ -1,4 +1,4 @@
-# resqer
+# resqer project
 
 ## 🔒 Overview
 
